@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch("https://playground.4geeks.com/contact/agendas/JuanParedes/contacts")
 					if (response.status === 404) {
 						console.log(" Usuario no encontrado, creando usuario...");
-						await createAgenda();
+						await getActions().createAgenda();
 						return;
 					  }
 
@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 					if (response.ok) {
 					  console.log(" Usuario creado exitosamente");
-					  getContacts();
+					  getActions().getContacts();
 					} else {
 					  console.error("Error al crear usuario");
 					}
@@ -62,7 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 					if (response.ok) {
 					  console.log(" Contacto agregado correctamente");
-					  getContacts(); 
+					  getActions().getContacts(); 
 					  setInputValue("");
 					} else {
 					  console.error(" Error al agregar contacto:", response.status);
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  
 					if (response.ok) {
 					  console.log(" Contacto actualizado");
-					  getContacts();
+					  getActions().getContacts();
 					} else {
 					  console.error(" Error al actualizar contacto:", response.status);
 					}
@@ -101,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 					  if (response.ok) {
 						console.log(" Contacto eliminado");
-						getContacts();
+						getActions().getContacts();
 					  } else {
 						console.error(" Error al eliminar contacto:", response.status);
 					  }
